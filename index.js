@@ -21,7 +21,7 @@ const port = process.env.PORT || 2400
 console.log(process.env.mongo_db);
 
 //DB Connection
-mongoose.connect(process.env.mongo_db,{ useNewUrlParser: true , useUnifiedTopology: true  }, (err) =>{
+mongoose.connect("mongodb+srv://admin:F3ttuLPC5c3jow8o@cluster0.0aioe.mongodb.net/primary_db?retryWrites=true&w=majority",{ useNewUrlParser: true , useUnifiedTopology: true  }, (err) =>{
     console.log('connected to DB' , err)
 }); 
 
