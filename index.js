@@ -21,10 +21,9 @@ const port = process.env.PORT || 2400
 console.log(process.env.mongo_db);
 
 //DB Connection
-mongoose.connect(process.env.mongo_db,
-    { useNewUrlParser: true , useUnifiedTopology: true  }, () =>
-    console.log('connected to DB')
-); 
+mongoose.connect(process.env.mongo_db,{ useNewUrlParser: true , useUnifiedTopology: true  }, (err) =>{
+    console.log('connected to DB' , err)
+}); 
 
 app.use(express.json());
 app.use(cors())
