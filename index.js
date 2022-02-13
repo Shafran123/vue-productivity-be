@@ -13,11 +13,12 @@ const tasksRoute = require('./routes/user/tasks.route');
 
 var app = express();
 
-//dotenv.config();
+dotenv.config();
 
 //balance = process.env.BALANCE
 const port = process.env.PORT || 2400
 
+console.log(process.env.mongo_db);
 
 //DB Connection
 mongoose.connect(process.env.mongo_db,
