@@ -99,13 +99,16 @@ exports.searchTask = async (req, res) => {
 
     console.log('SearchTeam', query);
 
+    var query = {$or:[{task_code:{$regex: query}}, {task_name:{$regex: query}}, {project:{$regex: query}},  {status:{$regex: query}}]}
+
+
     if(!query){
-        res.status(200).send({ success: 'true', data: [], message: 'teamList Fetch Sucessfully' })
+        res.status(200).send({ success: 'true', data: [], message: 'Emplet Result Sned Sucessfully' })
     }else{
 
         try {
             //check searchResult
-            const searchResult = await Task.find({ task_code: { $regex: new RegExp(query) } })
+            const searchResult = await Task.find(query)
     
             console.log(searchResult);
     

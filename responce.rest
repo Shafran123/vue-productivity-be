@@ -1,6 +1,6 @@
 # GET https://bank-of-seamless.herokuapp.com/api/v1/balance
 
-GET http://localhost:2400/api/v1/task/search-task?q=task
+GET http://localhost:2400/api/v1/task/search-task?q=Fe
 
 # POST http://localhost:2400/api/v1/register-user
 # Content-Type: application/json
