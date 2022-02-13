@@ -22,7 +22,7 @@ console.log(process.env.mongo_db);
 
 //DB Connection
 mongoose.connect(process.env.mongo_db,
-    { useNewUrlParser: true }, () =>
+    { useNewUrlParser: true , useUnifiedTopology: true  }, () =>
     console.log('connected to DB')
 ); 
 
