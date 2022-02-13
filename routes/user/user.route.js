@@ -3,6 +3,7 @@ const userController = require('../../controllers/user/user.controller');
 const is_auth = require('../../middleware/is_auth');
 
 router.post('/login' ,  userController.loginAsUser)
+router.post('/register-admin-user',  userController.registerAsUser)
 router.post('/create-team' , is_auth,  userController.createTeam)
 router.get('/get-all-teams' , is_auth,  userController.getAllTeams)
 router.put('/update-team' , is_auth,  userController.updateTeam)

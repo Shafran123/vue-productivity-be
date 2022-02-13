@@ -2,6 +2,48 @@ const { userLoginValidation, createTeamValidation } = require("../../validators/
 const Users = require('../../models/user.model')
 const Teams = require("../../models/team.model")
 
+
+
+exports.registerAsUser = async (req, res) => {
+
+    //check user exist
+    const emailCheck = await Users.findOne({ email: req.body.email })
+
+    if (emailCheck) {
+        return (
+            res.status(400).send({
+                code: 400,
+                error: {
+                    "status": "Bad reaquest",
+                    "message": 'Email Already Exixts'
+                }
+            })
+        )
+    }
+
+    //Hash the password
+    const salt = await bycrpt.genSalt(10);
+    const hashedPassword = await bycrpt.hash(req.body.password, salt)
+
+    const user = new Users({
+        name: req.body.name,
+        contact_no: req.body.contact_no,
+        email: req.body.email,
+        password: hashedPassword
+    });
+
+    console.log('user', user)
+
+    try {
+        const registeredUser = await user.save();
+
+        res.status(200).send({ success: 'true', registeredUser, message: 'User Registration Sucessfull' })
+    } catch (err) {
+        res.status(400).send({ status: 400, message: err })
+    }
+
+}
+
 exports.loginAsUser = async (req, res) => {
     console.log(req.body, 'Login')
     //Validation 
