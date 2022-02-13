@@ -48,11 +48,11 @@ exports.uploadTask = async (req, res) => {
                             }
                         })
                     )
-                }else{
-                    res.status(200).send({ success: 'true' , message: 'Task Updated Sucessfully!' })
+                } else {
+                    res.status(200).send({ success: 'true', message: 'Task Updated Sucessfully!' })
                 }
 
-            }catch(err) {
+            } catch (err) {
                 res.status(400).send({ status: 400, message: err })
             }
 
@@ -67,19 +67,19 @@ exports.uploadTask = async (req, res) => {
 
 exports.getAllTasks = async (req, res) => {
 
-    
+
     //check isTeamExist
 
     try {
-        const taskList = await Task.find({'group': 'status'})
+        const taskList = await Task.find({ 'group': 'status' })
         console.log(taskList, 'taskList');
         //console.log(taskList.filter(task => task.status == 'Completed'), 'taskList' );
 
         let structuredData = {
-           
+
             backlog_tasks: taskList.filter(task => task.status == 'Backlog'),
             inprogress_tasks: taskList.filter(task => task.status == 'Inprogress'),
-            completed_tasks : taskList.filter(task => task.status == 'Completed')
+            completed_tasks: taskList.filter(task => task.status == 'Completed')
 
         }
 
@@ -89,4 +89,33 @@ exports.getAllTasks = async (req, res) => {
 
         res.status(500).send({ status: 500, message: err })
     }
+}
+
+
+
+exports.searchTask = async (req, res) => {
+
+    var query = req.query.q
+
+    console.log('SearchTeam', query);
+
+    if(!query){
+        res.status(200).send({ success: 'true', data: [], message: 'teamList Fetch Sucessfully' })
+    }else{
+
+        try {
+            //check searchResult
+            const searchResult = await Task.find({ task_code: { $regex: new RegExp(query) } })
+    
+            console.log(searchResult);
+    
+            res.status(200).send({ success: 'true', data: searchResult, message: 'teamList Fetch Sucessfully' })
+    
+        } catch (err) {
+    
+            res.status(500).send({ status: 500, message: err })
+        }
+    }
+
+
 }

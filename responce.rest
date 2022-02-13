@@ -1,6 +1,6 @@
 # GET https://bank-of-seamless.herokuapp.com/api/v1/balance
 
-# GET http://localhost:2400/api/v1/user/user
+GET http://localhost:2400/api/v1/task/search-task?q=task
 
 # POST http://localhost:2400/api/v1/register-user
 # Content-Type: application/json
@@ -12,13 +12,13 @@
 # "password" : "123456789999"
 # }
 
-POST http://localhost:2400/api/v1/user/login
-Content-Type: application/json
+# POST https://vue-backend-prodicvity.herokuapp.com/api/v1/user/login
+# Content-Type: application/json
 
-{
-"email": "shafran@ieee.org",
-"password" : "123456789999"
-}
+# {
+# "email": "shafran@ieee.org",
+# "password" : "123456789999"
+# }
 
 
 

@@ -6,6 +6,7 @@ const upload = multer()
 
 router.post('/upload-task' , is_auth, upload.single('file'), taskController.uploadTask)
 router.get('/get-all-tasks' , is_auth,  taskController.getAllTasks)
+router.get('/search-task' ,  taskController.searchTask)
 // router.put('/update-employee' , is_auth,  empController.updateEmp)
 // router.delete('/delete-employee' , is_auth,  empController.deleteEmp)
 
