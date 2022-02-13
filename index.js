@@ -13,7 +13,7 @@ const tasksRoute = require('./routes/user/tasks.route');
 
 var app = express();
 
-dotenv.config();
+//dotenv.config();
 
 //balance = process.env.BALANCE
 const port = process.env.PORT || 2400
